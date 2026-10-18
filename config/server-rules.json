@@ -1,0 +1,26 @@
+{
+  "title": "The Stock Guidelines",
+  "description": "In order to keep the server safe, The Stock has various rules to ensure that everyone has the best possible experience within our server. You are subject to moderation actions by joining this server. Moderator discretion is in effect.",
+  "fields": [
+    {
+      "name": "Discord Policies",
+      "value": "You are to follow Discord's Terms of Service at all times. Failure to do so will result in moderation action depending on the severity of the situation.\n[Discord Terms of Service](https://discord.com/terms) · [Community Guidelines](https://discord.com/guidelines)"
+    },
+    {
+      "name": "Respect and Common Sense",
+      "value": "• Respect your peers and staff members.\n• Strict no-tolerance policy for derogatory, malicious, or racist language of any kind.\n• Use common sense in all situations. If you know something isn't right and you do it anyway because it isn't in the rules, you're subject to moderation action."
+    },
+    {
+      "name": "Server Safety and Security",
+      "value": "• If you see something, say something. If you know someone is breaking Discord ToS or a server rule, report it in the designated support channel.\n• Cyber-bullying is strictly prohibited.\n• NSFW/NSFL content is strictly prohibited, including emojis, pictures, videos, and other content.\n• No advertising or illegal conduct of any kind, including invite links, referral links, and non-affiliated social media links.\n• No malicious links, downloads, or suspicious content.\n• Impersonation of reputable or staff members is strictly prohibited."
+    },
+    {
+      "name": "IMPORTANT",
+      "value": "**STAFF RESERVE THE RIGHT TO EXERCISE THEIR DISCRETION ON BEHAVIOR THAT THEY DEEM IS OR MAY BECOME DETRIMENTAL TO THIS SERVER.**"
+    },
+    {
+      "name": "Appeals",
+      "value": "If you believe you have been unjustly moderated, please create an appeal ticket."
+    }
+  ]
+}

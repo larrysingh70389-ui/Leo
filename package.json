@@ -1,0 +1,41 @@
+{
+  "name": "leonidas-discord-bot",
+  "version": "1.0.0",
+  "description": "A beginner-friendly Discord bot built with discord.js.",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "start:always": "node scripts/keep-alive.js",
+    "dev": "node --watch src/index.js",
+    "deploy": "node deploy-commands.js",
+    "test": "node tests/calculator.mjs && node tests/login-time.mjs && node tests/paid-command.mjs && node tests/ticket-embed-commands.mjs && node tests/user-checks.mjs && node tests/ai-errors.mjs && node tests/public-apis.mjs && node tests/crypto-balance.mjs && node tests/user-wallets.mjs && node tests/slash-commands.mjs && node tests/prefix-smoke.mjs",
+    "test:calculator": "node tests/calculator.mjs",
+    "test:login-time": "node tests/login-time.mjs",
+    "test:paid": "node tests/paid-command.mjs",
+    "test:user-checks": "node tests/user-checks.mjs",
+    "pm2:start": "pm2 startOrRestart ecosystem.config.cjs --only visty-bot --update-env && pm2 save",
+    "pm2:stop": "pm2 stop visty-bot && pm2 save",
+    "pm2:restart": "pm2 restart visty-bot --update-env && pm2 save",
+    "pm2:logs": "pm2 logs visty-bot",
+    "pm2:status": "pm2 status",
+    "pm2:delete": "pm2 delete visty-bot && pm2 save --force",
+    "pm2:startup:windows": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/install-pm2-startup.ps1"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "better-sqlite3": "^13.0.3",
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.5",
+    "openai": "^6.49.0",
+    "pm2": "^7.0.4",
+    "qrcode": "^1.5.4"
+  },
+  "overrides": {
+    "pm2": {
+      "js-yaml": "^5.4.2"
+    }
+  }
+}

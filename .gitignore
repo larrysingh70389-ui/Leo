@@ -1,0 +1,12 @@
+node_modules/
+.env
+.env.*
+!.env.example
+.bot.lock
+npm-debug.log*
+logs/
+.pm2/
+data/*.sqlite
+data/*.sqlite-*
+data/invite-tracking.json
+Package_824R0XOHA-lts/
