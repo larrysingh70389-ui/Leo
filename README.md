@@ -32,7 +32,7 @@ A Discord app built with JavaScript and discord.js. Slash commands support Guild
    npm run deploy
    ```
 
-   The deploy script checks the registered global command set, contexts, installation types, and default permissions through Discord's API. `GUILD_ID`, if configured, is used to remove matching legacy guild-scoped commands.
+   Run this as a separate one-off deployment task after pulling the repository; keep HeavenCloud's normal **Main File** set to `src/index.js`. `npm run deploy` invokes the root `deploy.js` wrapper, which runs the existing `deploy-commands.js` registration and verification logic. It verifies the token's bot identity against `CLIENT_ID`, registers commands globally, then checks command names, contexts, installation types, and permissions through Discord's API. If `GUILD_ID` is configured, matching legacy guild-scoped commands are removed after global registration is verified. If Discord denies access to that optional legacy-cleanup guild, deployment clearly warns that cleanup was skipped while reporting the separately verified global registration. Deployment logs identify the failed operation and Discord HTTP/error codes without logging credentials.
 
 5. Start the bot:
 

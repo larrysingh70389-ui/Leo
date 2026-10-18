@@ -8,7 +8,7 @@
     "start": "node src/index.js",
     "start:always": "node scripts/keep-alive.js",
     "dev": "node --watch src/index.js",
-    "deploy": "node deploy-commands.js",
+    "deploy": "node deploy.js",
     "test": "node tests/calculator.mjs && node tests/login-time.mjs && node tests/paid-command.mjs && node tests/ticket-embed-commands.mjs && node tests/user-checks.mjs && node tests/ai-errors.mjs && node tests/public-apis.mjs && node tests/crypto-balance.mjs && node tests/user-wallets.mjs && node tests/slash-commands.mjs && node tests/prefix-smoke.mjs",
     "test:calculator": "node tests/calculator.mjs",
     "test:login-time": "node tests/login-time.mjs",
