@@ -22,6 +22,7 @@ assert.deepEqual(embedCommand.options.slice(1).map((option) => option.name), [
 const adminPermissions = { has: (permission) => permission === PermissionFlagsBits.Administrator };
 const noPermissions = { has: () => false };
 config.ticketCategoryId = '';
+config.ticketSupportRoleIds = [];
 const sentPanels = [];
 const panelInteraction = {
   guild: { id: 'guild-1' },
@@ -34,13 +35,24 @@ await assert.rejects(handleTicketPanelCommand(panelInteraction), /Set TICKET_CAT
 config.ticketCategoryId = 'category-1';
 await assert.rejects(handleTicketPanelCommand(panelInteraction), /Set TICKET_SUPPORT_ROLE_IDS/);
 config.ticketSupportRoleIds = ['staff-role'];
-assert.equal(await handleTicketPanelCommand(panelInteraction), true);
+config.ticketPanelBannerUrl = 'banner-host-without-a-valid-image-url';
+const panelWarnings = [];
+const originalWarn = console.warn;
+console.warn = (message) => panelWarnings.push(message);
+try {
+  assert.equal(await handleTicketPanelCommand(panelInteraction), true);
+} finally {
+  console.warn = originalWarn;
+}
 assert.equal(sentPanels[0].embeds[0].data.title, 'Support Hub');
 assert.match(sentPanels[0].embeds[0].data.description, /Need help\?/);
+assert.equal(sentPanels[0].embeds[0].data.image, undefined);
+assert.match(panelWarnings[0], /posted without a banner/);
 assert.equal(sentPanels[0].components[0].components.length, 3);
 assert.deepEqual(sentPanels[0].components[0].components.map((button) => button.data.custom_id), [
   'ticket:open:support', 'ticket:open:appeal', 'ticket:open:report'
 ]);
+config.ticketPanelBannerUrl = '';
 assert.equal(await handleSlashCommand({
   ...panelInteraction,
   commandName: 'ticketpanel'

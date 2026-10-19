@@ -47,8 +47,14 @@ function getTicketPanelPayload() {
       { name: '\u200b', value: '────────────────────────', inline: false },
       { name: ticketTypes.report.title, value: ticketTypes.report.description, inline: false }
     );
-  const bannerUrl = parseHttpsImageUrl(config.ticketPanelBannerUrl, 'ticket panel banner URL');
-  if (bannerUrl) embed.setImage(bannerUrl);
+  if (config.ticketPanelBannerUrl) {
+    try {
+      embed.setImage(parseHttpsImageUrl(config.ticketPanelBannerUrl, 'ticket panel banner URL'));
+    } catch (error) {
+      if (!(error instanceof Error) || !error.message.startsWith('The ticket panel banner URL')) throw error;
+      console.warn(`${error.message} The panel will be posted without a banner.`);
+    }
+  }
 
   const row = new ActionRowBuilder().addComponents(
     ...Object.entries(ticketTypes).map(([type, ticket]) => new ButtonBuilder()
